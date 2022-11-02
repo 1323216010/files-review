@@ -11,4 +11,6 @@ public class Files {
     private String name;
 
     private String type;
+
+    private String url;
 }
