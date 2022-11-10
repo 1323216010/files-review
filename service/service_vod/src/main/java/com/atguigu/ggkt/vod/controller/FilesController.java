@@ -77,6 +77,7 @@ public class FilesController {
     @ApiOperation(value = "新增", httpMethod = "POST")
     @PostMapping("add")
     public ResponseEntity<Files> add(@RequestBody Files files) {
+        System.out.println("files:---->" + files);
         return ResponseEntity.ok(this.filesService.insert(files));
     }
 

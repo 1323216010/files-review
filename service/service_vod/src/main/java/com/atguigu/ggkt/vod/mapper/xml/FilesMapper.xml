@@ -58,8 +58,8 @@
 
     <!--新增所有列-->
     <insert id="insert" keyProperty="id" useGeneratedKeys="true">
-        insert into files(path, name, type)
-        values (#{path}, #{name}, #{type})
+        insert into files(path, name, type, url)
+        values (#{path}, #{name}, #{type}, #{url})
     </insert>
 
     <!--通过主键修改数据-->
@@ -117,13 +117,7 @@
         delete from files
         where id = #{id,jdbcType=INTEGER}
     </delete>
-    <insert id="insert" keyColumn="id" keyProperty="id" parameterType="com.atguigu.ggkt.vod.domain.Files" useGeneratedKeys="true">
-        <!--@mbg.generated-->
-        insert into files (`path`, `name`, `type`
-        )
-        values (#{path,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, #{type,jdbcType=VARCHAR}
-        )
-    </insert>
+
     <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="com.atguigu.ggkt.vod.domain.Files" useGeneratedKeys="true">
         <!--@mbg.generated-->
         insert into files
