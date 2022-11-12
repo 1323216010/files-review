@@ -1,0 +1,6 @@
+spring:
+  mail:
+    host: smtp.qq.com  # 发送邮件的服务器地址
+    username: 1909484942@qq.com # 登录qq邮箱的账号
+    password: hpyvmbppfrzmeegi # 开启 IMAP/SMTP服务 获得的授权码
+    default-encoding: UTF-8
