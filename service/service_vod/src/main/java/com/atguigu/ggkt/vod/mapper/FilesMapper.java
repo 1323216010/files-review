@@ -1,9 +1,11 @@
 package com.atguigu.ggkt.vod.mapper;
 
 import com.atguigu.ggkt.vod.domain.Files;
+import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 import java.util.List;
 
+@Mapper
 public interface FilesMapper {
 
     /**

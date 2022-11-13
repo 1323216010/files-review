@@ -2,8 +2,11 @@ package com.atguigu.ggkt.vod.mapper;
 
 import com.atguigu.ggkt.vod.domain.User;
 import java.util.List;
+
+import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
+@Mapper
 public interface UserMapper {
     int deleteByPrimaryKey(Integer id);
 
