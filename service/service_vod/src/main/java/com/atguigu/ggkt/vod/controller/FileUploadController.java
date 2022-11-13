@@ -34,7 +34,7 @@ public class FileUploadController {
     @ApiOperation("文件上传")
     @PostMapping("fileUpload")
     public Result fileUpload(@RequestParam("file") MultipartFile file) {
-        String url = StaticGetPrivate.getKkAddres() + "/fileUpload";
+        String url = StaticGetPrivate.getKkAddres() + "/fileUpload2";
 
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.MULTIPART_FORM_DATA);

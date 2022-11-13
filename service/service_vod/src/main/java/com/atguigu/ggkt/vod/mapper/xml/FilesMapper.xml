@@ -30,7 +30,7 @@
         select
         *
 
-        from files
+        from files where secret is null
         limit #{offset}, #{limit}
     </select>
 
