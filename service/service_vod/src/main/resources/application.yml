@@ -4,3 +4,6 @@ spring:
     username: 1909484942@qq.com # 登录qq邮箱的账号
     password: hpyvmbppfrzmeegi # 开启 IMAP/SMTP服务 获得的授权码
     default-encoding: UTF-8
+
+kkFile:
+  address: http://111.230.194.21:8012
