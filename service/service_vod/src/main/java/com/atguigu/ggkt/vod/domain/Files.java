@@ -2,6 +2,7 @@ package com.atguigu.ggkt.vod.domain;
 
 import java.util.Date;
 
+import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 
 /**
@@ -82,6 +83,9 @@ public class Files {
      * 更新时间
      */
     private Date updateTime;
+
+    @ApiModelProperty(value = "文件大小",name =  "volume",required =  false,example = "")
+    private String volume;
 
 }
 

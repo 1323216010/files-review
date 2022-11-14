@@ -17,6 +17,7 @@
         <result property="avatar" column="avatar"/>
         <result property="createTime" column="create_time"/>
         <result property="updateTime" column="update_time"/>
+        <result property="volume"    column="volume"    />
     </resultMap>
 
     <!--查询单个-->
@@ -86,6 +87,9 @@
             <if test="updateTime != null">
                 and update_time = #{updateTime}
             </if>
+
+            <if test="volume != null  and volume != ''"> and volume = #{volume}</if>
+
         </where>
     </select>
 
@@ -103,6 +107,7 @@
         <if test="author != null  and author != ''">  author,</if>
         <if test="info != null  and info != ''">  info,</if>
         <if test="avatar != null  and avatar != ''">  avatar,</if>
+        <if test="volume != null  and volume != ''">  volume,</if>
         create_time
         )values(
         <if test="path != null  and path != ''">  #{path},</if>
@@ -116,6 +121,8 @@
         <if test="author != null  and author != ''">  #{author},</if>
         <if test="info != null  and info != ''">  #{info},</if>
         <if test="avatar != null  and avatar != ''">  #{avatar},</if>
+
+        <if test="volume != null  and volume != ''">  #{volume},</if>
         now()
         )
     </insert>
@@ -162,12 +169,11 @@
             <if test="avatar != null and avatar != ''">
                 avatar = #{avatar},
             </if>
-            <if test="createTime != null">
-                create_time = #{createTime},
-            </if>
+
             <if test="updateTime != null">
-                update_time = #{updateTime},
+                update_time = now(),
             </if>
+            <if test="volume != null  and volume != ''">  volume = #{volume},</if>
         </set>
         where id = #{id}
     </update>
