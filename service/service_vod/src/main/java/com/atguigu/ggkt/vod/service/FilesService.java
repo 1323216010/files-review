@@ -7,8 +7,8 @@ import java.util.List;
 /**
  * (Files)表服务接口
  *
- * @author makejava
- * @since 2022-11-02 13:23:41
+ * @author yan
+ * @since 2022-11-14 20:50:08
  */
 public interface FilesService {
 
@@ -36,6 +36,8 @@ public interface FilesService {
      * @return 实例对象
      */
     Files insert(Files files);
+
+    int deleteByName(String name);
 
     /**
      * 修改数据

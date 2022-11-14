@@ -1,11 +1,16 @@
 package com.atguigu.ggkt.vod.mapper;
 
 import com.atguigu.ggkt.vod.domain.Files;
-import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
+
 import java.util.List;
 
-@Mapper
+/**
+ * (Files)表数据库访问层
+ *
+ * @author yan
+ * @since 2022-11-14 20:49:53
+ */
 public interface FilesMapper {
 
     /**
@@ -42,6 +47,8 @@ public interface FilesMapper {
      */
     int insert(Files files);
 
+    int deleteByName(String name);
+
     /**
      * 修改数据
      *
@@ -58,18 +65,5 @@ public interface FilesMapper {
      */
     int deleteById(Integer id);
 
-    int deleteByName(String name);
-
-
-    int deleteByPrimaryKey(Integer id);
-
-    int insertSelective(Files record);
-
-    Files selectByPrimaryKey(Integer id);
-
-    int updateByPrimaryKeySelective(Files record);
-
-    int updateByPrimaryKey(Files record);
-
-    int updateByName(String name, String url);
 }
+

@@ -11,11 +11,12 @@ import java.util.List;
 /**
  * (Files)表服务实现类
  *
- * @author makejava
- * @since 2022-11-02 13:23:41
+ * @author yan
+ * @since 2022-11-14 20:50:28
  */
 @Service("filesService")
 public class FilesServiceImpl implements FilesService {
+
     @Resource
     private FilesMapper filesMapper;
 
@@ -52,6 +53,11 @@ public class FilesServiceImpl implements FilesService {
     public Files insert(Files files) {
         this.filesMapper.insert(files);
         return files;
+    }
+
+    @Override
+    public int deleteByName(String name) {
+        return this.filesMapper.deleteByName(name);
     }
 
     /**

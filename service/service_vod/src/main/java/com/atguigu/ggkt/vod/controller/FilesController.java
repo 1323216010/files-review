@@ -1,11 +1,9 @@
 package com.atguigu.ggkt.vod.controller;
 
 import com.atguigu.ggkt.vod.domain.Files;
-import com.atguigu.ggkt.vod.mapper.FilesMapper;
 import com.atguigu.ggkt.vod.service.FilesService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
-import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -15,22 +13,21 @@ import java.util.List;
 /**
  * (Files)表控制层
  *
- * @author makejava
- * @since 2022-11-02 13:23:35
+ * @author yan
+ * @since 2022-11-14 20:49:39
  */
 @Api(tags = {"FilesController"}, description = "相关接口")
 @RestController
 @RequestMapping("files")
-@RequiredArgsConstructor
 public class FilesController {
+
     /**
      * 服务对象
      */
     @Resource
     private FilesService filesService;
 
-    @Resource
-    private FilesMapper filesMapper;
+
     /**
      * 通过主键查询单条数据
      *
@@ -56,19 +53,6 @@ public class FilesController {
     }
 
     /**
-     * 更新
-     *
-     * @param
-     * @return 数据
-     */
-    @ApiOperation(value = "根据唯一标志获取详情", httpMethod = "GET")
-    @GetMapping("updateByName/{name}/{url}")
-    public ResponseEntity<Integer> updateByName(@PathVariable("name") String name, @PathVariable("url") String url) {
-        return ResponseEntity.ok(this.filesMapper.updateByName(name, url));
-    }
-
-
-    /**
      * 新增数据
      *
      * @param files 实体
@@ -77,8 +61,19 @@ public class FilesController {
     @ApiOperation(value = "新增", httpMethod = "POST")
     @PostMapping("add")
     public ResponseEntity<Files> add(@RequestBody Files files) {
-        System.out.println("files:---->" + files);
         return ResponseEntity.ok(this.filesService.insert(files));
+    }
+
+    /**
+     * 删除数据
+     *
+     * @param name
+     * @return 删除是否成功
+     */
+    @ApiOperation(value = "删除", httpMethod = "GET")
+    @GetMapping("delete/{name}")
+    public ResponseEntity<Integer> deleteById(@PathVariable("name") String name) {
+        return ResponseEntity.ok(this.filesService.deleteByName(name));
     }
 
     /**
@@ -96,13 +91,13 @@ public class FilesController {
     /**
      * 删除数据
      *
-     * @param name
+     * @param id 主键
      * @return 删除是否成功
      */
     @ApiOperation(value = "删除", httpMethod = "GET")
-    @GetMapping("delete/{name}")
-    public ResponseEntity<Integer> deleteById(@PathVariable("name") String name) {
-        return ResponseEntity.ok(this.filesMapper.deleteByName(name));
+    @DeleteMapping("delete/{id}")
+    public ResponseEntity<Boolean> deleteById(@PathVariable("id") Integer id) {
+        return ResponseEntity.ok(this.filesService.deleteById(id));
     }
 
 }
