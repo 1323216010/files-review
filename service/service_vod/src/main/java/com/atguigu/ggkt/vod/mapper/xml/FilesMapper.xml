@@ -89,12 +89,35 @@
         </where>
     </select>
 
-    <!--新增所有列-->
+
     <insert id="insert" keyProperty="id" useGeneratedKeys="true">
-        insert into files(path, name, type, url, user_name, secret, title, star, author, info, avatar, create_time,
-        update_time)
-        values (#{path}, #{name}, #{type}, #{url}, #{userName}, #{secret}, #{title}, #{star}, #{author}, #{info},
-        #{avatar}, #{createTime}, #{updateTime})
+        insert into files(
+        <if test="path != null  and path != ''">  path,</if>
+        <if test="name != null  and name != ''">  name,</if>
+        <if test="type != null  and type != ''">  type,</if>
+        <if test="url != null  and url != ''">  url,</if>
+        <if test="userName != null  and userName != ''">  user_name,</if>
+        <if test="secret != null  and secret != ''">  secret,</if>
+        <if test="title != null  and title != ''">  title,</if>
+        <if test="star != null  and star != ''">  star,</if>
+        <if test="author != null  and author != ''">  author,</if>
+        <if test="info != null  and info != ''">  info,</if>
+        <if test="avatar != null  and avatar != ''">  avatar,</if>
+        create_time
+        )values(
+        <if test="path != null  and path != ''">  #{path},</if>
+        <if test="name != null  and name != ''">  #{name},</if>
+        <if test="type != null  and type != ''">  #{type},</if>
+        <if test="url != null  and url != ''">  #{url},</if>
+        <if test="userName != null  and userName != ''">  #{userName},</if>
+        <if test="secret != null  and secret != ''">  #{secret},</if>
+        <if test="title != null  and title != ''">  #{title},</if>
+        <if test="star != null  and star != ''">  #{star},</if>
+        <if test="author != null  and author != ''">  #{author},</if>
+        <if test="info != null  and info != ''">  #{info},</if>
+        <if test="avatar != null  and avatar != ''">  #{avatar},</if>
+        now()
+        )
     </insert>
 
     <delete id="deleteByName" parameterType="java.lang.String">
