@@ -89,7 +89,7 @@
             </if>
 
             <if test="volume != null  and volume != ''"> and volume = #{volume}</if>
-
+            and secret is null
         </where>
     </select>
 
