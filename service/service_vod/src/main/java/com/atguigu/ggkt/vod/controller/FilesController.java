@@ -2,6 +2,7 @@ package com.atguigu.ggkt.vod.controller;
 
 import com.atguigu.ggkt.vod.domain.Files;
 import com.atguigu.ggkt.vod.service.FilesService;
+import com.atguigu.ggkt.vod.utils.GithubPageHelper;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.http.ResponseEntity;
@@ -50,6 +51,20 @@ public class FilesController {
     @GetMapping("{offset}/{limit}")
     public ResponseEntity<List<Files>> queryByLimit(@PathVariable("offset") Integer offset, @PathVariable("limit") Integer limit) {
         return ResponseEntity.ok(this.filesService.queryAllByLimit(offset, limit));
+    }
+
+
+    /**
+     * 列表查询
+     *
+     * @param files 实体
+     * @return 查询结果
+     */
+    @ApiOperation(value = "查询", httpMethod = "POST")
+    @PostMapping("list")
+    public ResponseEntity<List<Files>> list(@RequestBody Files files) {
+//        GithubPageHelper.startPage();
+        return ResponseEntity.ok(this.filesService.queryAll(files));
     }
 
     /**

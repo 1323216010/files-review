@@ -29,6 +29,8 @@ public interface FilesService {
      */
     List<Files> queryAllByLimit(int offset, int limit);
 
+    List<Files> queryAll(Files files);
+
     /**
      * 新增数据
      *

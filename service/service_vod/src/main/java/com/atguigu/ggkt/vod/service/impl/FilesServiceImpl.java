@@ -43,6 +43,11 @@ public class FilesServiceImpl implements FilesService {
         return this.filesMapper.queryAllByLimit(offset, limit);
     }
 
+    @Override
+    public List<Files> queryAll(Files files) {
+        return this.filesMapper.queryAll(files);
+    }
+
     /**
      * 新增数据
      *
