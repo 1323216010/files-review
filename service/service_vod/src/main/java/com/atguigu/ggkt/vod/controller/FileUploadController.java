@@ -21,6 +21,8 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.annotation.Resource;
+import java.io.UnsupportedEncodingException;
+import java.net.URLDecoder;
 import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
 import java.util.HashMap;
@@ -80,10 +82,20 @@ public class FileUploadController {
     }
 
     @GetMapping("/deleteFile")
-    public String deleteFile(String fileName) {
+    public String deleteFile(@RequestParam("fileName") String fileName) {
+
+        try {
+            fileName = URLDecoder.decode(fileName, "UTF-8");
+        } catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
+        }
+
         Map<String,Object> map = new HashMap<>();
         map.put("fileName",fileName);
-        StaticGetPrivate.getTemplates().getForObject(StaticVariables.fileDelete,String.class,map);
+        StaticGetPrivate.getTemplates().getForObject(StaticVariables.fileDelete + "?fileName={fileName}",String.class,map);
+
+        filesService.deleteByName(fileName);
+
         return "文件删除成功";
     }
 }

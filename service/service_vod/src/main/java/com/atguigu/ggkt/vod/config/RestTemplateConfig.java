@@ -2,6 +2,7 @@ package com.atguigu.ggkt.vod.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.web.client.RestTemplate;
 
 /**
@@ -21,4 +22,5 @@ public class RestTemplateConfig {
         // restTemplate.getMessageConverters().set(1,new StringHttpMessageConverter(StandardCharsets.UTF_8)); // 支持中文编码
         return new RestTemplate();
     }
+
 }
