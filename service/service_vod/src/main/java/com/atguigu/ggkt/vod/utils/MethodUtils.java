@@ -196,4 +196,32 @@ public class MethodUtils {
         }
     }
 
+    public static String getFileType(String fileName) {
+        char[] chars = fileName.toCharArray();
+        for (int i = chars.length - 1; i < chars.length; i--) {
+            if (chars[i] == '.') {
+                String fileType = "";
+                for (int j = i + 1; j < chars.length; j++) {
+                    fileType = fileType + chars[j];
+                }
+                return fileType;
+            }
+        }
+        return null;
+    }
+
+    public static String getFileTitle(String fileName) {
+        char[] chars = fileName.toCharArray();
+        for (int i = chars.length - 1; i < chars.length; i--) {
+            if (chars[i] == '.') {
+                String fileTitle = "";
+                for (int j = 0; j < i; j++) {
+                    fileTitle = fileTitle + chars[j];
+                }
+                return fileTitle;
+            }
+        }
+        return null;
+    }
+
 }
