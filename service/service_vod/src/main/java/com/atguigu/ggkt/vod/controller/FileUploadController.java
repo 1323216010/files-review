@@ -1,5 +1,6 @@
 package com.atguigu.ggkt.vod.controller;
 
+import cn.dev33.satoken.stp.StpUtil;
 import com.atguigu.ggkt.result.Result;
 import com.atguigu.ggkt.vod.config.StaticVariables;
 import com.atguigu.ggkt.vod.domain.Files;
@@ -67,6 +68,7 @@ public class FileUploadController {
         StaticGetPrivate.getTemplates().exchange(url, HttpMethod.POST, requestEntity, String.class);
 
         Files files = new Files();
+        files.setUserName(StpUtil.getLoginId().toString());
         files.setTitle(MethodUtils.getFileTitle(file.getOriginalFilename()));
         files.setName(file.getOriginalFilename());
         files.setVolume(MethodUtils.getFileSize(String.valueOf(file.getSize())));

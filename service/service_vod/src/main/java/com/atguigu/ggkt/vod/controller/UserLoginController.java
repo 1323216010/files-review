@@ -5,12 +5,14 @@ import com.atguigu.ggkt.result.Result;
 import com.atguigu.ggkt.vod.domain.LoginForm;
 import com.atguigu.ggkt.vod.mapper.UserMapper;
 import com.atguigu.ggkt.vod.utils.MethodUtils;
+import com.atguigu.ggkt.vod.utils.MyHttpUtils;
 import com.atguigu.ggkt.vod.utils.StaticGetPrivate;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
@@ -29,7 +31,7 @@ public class UserLoginController {
     @PostMapping("login")
     public Result login(@RequestBody LoginForm loginForm) {
         StpUtil.login(loginForm.getUsername());
-        System.out.println("StpUtil.getTokenValue()---->" + StpUtil.getTokenValue());
+        System.out.println("MyHttpUtils.getIP():---->" + MyHttpUtils.getIP());
         //{"code":20000,"data":{"token":"admin-token"}}
         Map<String,Object> map = new HashMap<>();
         if(loginForm.getPassword().equals(userMapper.selectByUserName(loginForm.getUsername()).getPassword())) {
