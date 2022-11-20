@@ -9,7 +9,7 @@ import javax.annotation.PostConstruct;
 import javax.annotation.Resource;
 
 /**
- * @author sxwh
+ * @author yan
  **/
 @Component
 public class StaticGetPrivate {

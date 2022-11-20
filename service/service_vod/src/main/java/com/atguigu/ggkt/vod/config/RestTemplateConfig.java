@@ -6,7 +6,7 @@ import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.web.client.RestTemplate;
 
 /**
- * @author sxwh
+ * @author yan
  **/
 @Configuration
 public class RestTemplateConfig {
